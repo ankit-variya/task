@@ -18,6 +18,15 @@ endpoints:
 - update = URL - http://localhost:3000/users/(passId) method = put body = { "name": "abc", "email": "abc12@gamail.com }
 - delete = URL - http://localhost:3000/users/(passId) method - delete
 
-#make changes in report.js file add your gmail credential = auth: { user: 'add your mail', pass: 'generate app password' # if you don't idea how to generate then follow https://www.youtube.com/watch?v=nuD6qNAurVM }
+#make changes in report.js file
+add your gmail credential = 
+          auth: { user: 'add your mail',
+                  pass: 'generate app password' # if you don't idea how to generate then follow https://www.youtube.com/watch?v=nuD6qNAurVM 
+                }
 
-const mailOptions = { from: 'add your mail', #add your mail to: 'add admin mail', #get daily report on this mail subject: 'Daily New Users Summary', text: New users added today: ${userEmails} };
+const mailOptions = { 
+  from: 'add your mail', #add your mail 
+  to: 'add admin mail', #get daily report on this mail 
+  subject: 'Daily New Users Summary', 
+  text: New users added today: ${userEmails} 
+};
