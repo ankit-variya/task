@@ -6,8 +6,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'add your mail',
-    pass: 'generate app password'
+    user: process.env.USER || 'add your mail',
+    pass: process.env.PASSWORD || 'generate app password'
   }
 });
 
@@ -27,7 +27,6 @@ async function cleanUpOldRecords() {
 // Function to send summary report = 
 async function sendSummaryReport() {
   try {
-    console.log('---')
     const newUsers = await knex('users')
       .where('createdAt', '>=', knex.raw('NOW() - INTERVAL 1 DAY'))
       .select('*');
@@ -36,8 +35,8 @@ async function sendSummaryReport() {
     console.log('userEmails', userEmails)
 
     const mailOptions = {
-      from: 'add your mail',
-      to: 'add admin mail',
+      from: process.env.USER || 'add your mail',
+      to: process.env.ADMIN || 'add admin mail',
       subject: 'Daily New Users Summary',
       text: `New users added today: ${userEmails}`
     };
