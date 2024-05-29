@@ -12,11 +12,11 @@ npm start (for running server)
 
 endpoints: 
 =============
-insert = URL - http://localhost:3000/users method = post, body = { "name": "demo5", "email": "demo512@gmail.com" }
-list = URL - http://localhost:3000/users method = get,
-userById = URL - http://localhost:3000/users/(passId) methos - get
-update = URL - http://localhost:3000/users/(passId) method = put body = { "name": "abc", "email": "abc12@gamail.com }
-delete = URL - http://localhost:3000/users/(passId) method - delete
+- insert = URL - http://localhost:3000/users method = post, body = { "name": "demo5", "email": "demo512@gmail.com" }
+- list = URL - http://localhost:3000/users method = get,
+- userById = URL - http://localhost:3000/users/(passId) methos - get
+- update = URL - http://localhost:3000/users/(passId) method = put body = { "name": "abc", "email": "abc12@gamail.com }
+- delete = URL - http://localhost:3000/users/(passId) method - delete
 
 #make changes in report.js file add your gmail credential = auth: { user: 'add your mail', pass: 'generate app password' # if you don't idea how to generate then follow https://www.youtube.com/watch?v=nuD6qNAurVM }
 
