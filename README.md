@@ -1,32 +1,87 @@
-# task
+# Task
 
-follow instruction step-by-step
+Follow the instructions step-by-step.
 
-npm install (installing dependancy for project)
+## Setup
 
-create database (db name = 'my_test') in mysql
+1. **Install Dependencies**
+    ```sh
+    npm install
+    ```
 
-knex migrate:latest (run migration for db)
+2. **Create Database**
+    - Create a database in MySQL with the name `my_test`.
 
-npm start (for running server)
+3. **Run Migrations**
+    ```sh
+    knex migrate:latest
+    ```
 
-endpoints: 
+4. **Start the Server**
+    ```sh
+    npm start
+    ```
+
+## Endpoints
+
 =============
-- insert = URL - http://localhost:3000/users method = post, body = { "name": "demo5", "email": "demo512@gmail.com" }
-- list = URL - http://localhost:3000/users method = get,
-- userById = URL - http://localhost:3000/users/(passId) methos - get
-- update = URL - http://localhost:3000/users/(passId) method = put body = { "name": "abc", "email": "abc12@gamail.com }
-- delete = URL - http://localhost:3000/users/(passId) method - delete
+- **Insert User**
+  - URL: `http://localhost:3000/users`
+  - Method: `POST`
+  - Body:
+    ```json
+    {
+      "name": "demo5",
+      "email": "demo512@gmail.com"
+    }
+    ```
 
-#make changes in report.js file
-add your gmail credential = 
-          auth: { user: 'add your mail',
-                  pass: 'generate app password' # if you don't idea how to generate then follow https://www.youtube.com/watch?v=nuD6qNAurVM 
-                }
+- **List Users**
+  - URL: `http://localhost:3000/users`
+  - Method: `GET`
 
-const mailOptions = { 
-  from: 'add your mail', #add your mail 
-  to: 'add admin mail', #get daily report on this mail 
-  subject: 'Daily New Users Summary', 
-  text: New users added today: ${userEmails} 
-};
+- **Get User By ID**
+  - URL: `http://localhost:3000/users/{id}`
+  - Method: `GET`
+
+- **Update User**
+  - URL: `http://localhost:3000/users/{id}`
+  - Method: `PUT`
+  - Body:
+    ```json
+    {
+      "name": "abc",
+      "email": "abc12@gmail.com"
+    }
+    ```
+
+- **Delete User**
+  - URL: `http://localhost:3000/users/{id}`
+  - Method: `DELETE`
+
+## Configure Email for Reports
+
+1. Open `report.js` file.
+2. Add your Gmail credentials:
+    ```javascript
+    auth: {
+      user: process.env.USER || 'add your mail',
+      pass: process.env.PASSWORD || 'generate app password' // if you don't know how to generate, follow https://www.youtube.com/watch?v=nuD6qNAurVM
+    }
+    ```
+
+3. Set the mail options:
+    ```javascript
+    const mailOptions = {
+      from: process.env.USER || 'add your mail', // Add your mail
+      to: process.env.ADMIN || 'add admin mail',  // Get daily report on this mail
+      subject: 'Daily New Users Summary',
+      text: `New users added today: ${userEmails}`
+    };
+    ```
+
+## Additional Notes
+
+- Ensure MySQL is running and accessible.
+- Configure your `.env` file (if using) with the appropriate database credentials and other environment-specific settings.
+- The email credentials should be kept secure. Consider using environment variables or a secrets management tool.
